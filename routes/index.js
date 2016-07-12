@@ -18,6 +18,13 @@ router.get('/books', function(req, res, next) {
   })
 });
 
+router.get('/books/:id', function(req, res, next) {
+  knex('book_author').select('author.first_name', 'author.last_name', 'author.image as authorImage', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').leftJoin('book', 'book_author.book_id', 'book.id').leftJoin('author', 'book_author.author_id', 'author.id').where('book.id', req.params.id).then(function(data) {
+    console.log(data)
+    res.render('readMore', { ReadMore: data[0] });
+  })
+})
+
 router.get('/authors', function(req, res, next) {
   res.render('authors');
 })
@@ -64,6 +71,8 @@ router.post('/edit', function(req, res, next) {
   res.redirect('books')
   })
 })
+
+
 
 
 
