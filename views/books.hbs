@@ -1,0 +1,15 @@
+  <h1 class="bookHeading">Books</h1>
+
+<div class="books_container">
+    {{#each author_data}}
+      <li><img src="{{this.bookImage}}" width="100" height="138" class="bookImage" /><li>
+      <ul class="book_info">
+        <li><h1>{{this.title}}</h1><a href="#">edit</a><a href="#">delete</a></li>
+        <li>By: {{this.first_name}} {{this.last_name}}</li>
+        <li>Genre: </li>
+        <li>{{this.description}}</li>
+      </ul>
+    {{/each}}
+
+
+</div>
