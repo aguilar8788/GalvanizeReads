@@ -1,3 +1,12 @@
+    <label for="filter">Filter Books</label>
+    <select class="filter" name="filter">
+        <option value="choose">choose</option>
+        <option value="all">All Books</option>
+        <option value="javascript">Javascript</option>
+        <option value="Python">Python</option>
+    </select>
+
+
   <h1 class="bookHeading">Books</h1>
 
 <div class="books_container">
@@ -14,3 +23,13 @@
 
 
 </div>
+
+<script>
+  $(document).ready(function() {
+  $( ".filter" ).on('change', function() {
+        var chosenVal = $(this).val();
+        console.log(chosenVal)
+        window.location.href = "/filtered/" + chosenVal;
+    });
+  })
+</script>
