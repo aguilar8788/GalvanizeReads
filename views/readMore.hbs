@@ -2,7 +2,12 @@
   <ul class="book_info">
     <li><img src="{{ReadMore.bookImage}}" width="100" height="138" class="bookImage" /></li>
     <li class="liData"><h1>{{ReadMore.title}}</h1></li>
-    <li class="liData">By: {{ReadMore.first_name}} {{ReadMore.last_name}}</li>
+
+    <li class="liData">By:
+      {{#each authors}}
+      <a href="/authors/{{this.authorId}}">{{this.first_name}} {{this.last_name}}</a>
+    {{/each}}
+    </li>
     <li class="liData">Genre: {{ReadMore.genre}}</li>
     <li class="description" class="liData">{{ReadMore.description}}</li>
   </ul>

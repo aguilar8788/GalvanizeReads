@@ -3,7 +3,7 @@
   <ul class="book_info">
     <li><img src="{{deleteBook.bookImage}}" width="100" height="138" class="bookImage" /></li>
     <li class="liData"><h1>{{deleteBook.title}}</h1></li>
-    <li class="liData">By: {{deleteBook.first_name}} {{deleteBook.last_name}}</li>
+    <li class="liData">By: <a href="/authors/{{deleteBook.authorId}}">{{deleteBook.first_name}} {{deleteBook.last_name}}</a></li>
     <li class="liData">Genre: {{deleteBook.genre}}</li>
     <li class="description" class="liData">{{deleteBook.description}}</li>
   </ul>

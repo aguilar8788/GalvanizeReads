@@ -5,3 +5,8 @@
     <li class="description" class="liData">{{ReadMore.bio}}</li>
   </ul>
 </div>
+<ul>
+  {{#each books}}
+      <li><a href="/books/{{this.id}}">{{this.title}}</a></li>
+  {{/each}}
+</ul>

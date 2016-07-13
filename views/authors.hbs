@@ -3,12 +3,12 @@
 <div class="books_container">
     {{#each author_data}}
       <ul class="book_info">
-        <li><img src="{{this.authorImage}}" width="100" height="138" class="bookImage" /></li>
-        <li class="liData"><a href="/{{this.id}}/editAuthor">edit</a><a href="/{{this.authorId}}/deleteAuthor">delete</a></li>
+        <li><img src="{{this.image}}" width="100" height="138" class="bookImage" /></li>
+        <li class="liData"><a href="/{{this.id}}/editAuthor">edit</a><a href="/{{this.id}}/deleteAuthor">delete</a></li>
         <li class="liData"><a href="/authors/{{this.id}}"><h1>{{this.first_name}} {{this.last_name}}</h1></a></li>
         <li class="description" class="liData">{{this.bio}}</li>
       </ul>
-      <p><a href="/books/{{this.id}}">&gtBooks</a></p>
+
     {{/each}}
 
     <a href="/addAuthor">Add an Author</a>
