@@ -25,9 +25,8 @@ router.get('/books/:id', function(req, res, next) {
 
 router.get('/authors', function(req, res, next) {
   return Promise.all([
-    knex('book_author').select('author.first_name', 'author.last_name', 'author.bio', 'author.image as authorImage', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').leftJoin('book', 'book_author.book_id', 'book.id').rightJoin('author', 'book_author.author_id', 'author.id'),
+    knex('book_author').select('author.first_name', 'author.last_name', 'author.bio', 'author.image as authorImage', 'author.id as authorId', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').leftJoin('book', 'book_author.book_id', 'book.id').rightJoin('author', 'book_author.author_id', 'author.id'),
   ]).then(function(data) {
-    console.log(data)
   res.render('authors', { author_data: data[0] });
   })
 });
@@ -37,9 +36,26 @@ router.get('/addAuthor', function(req, res, next) {
 })
 
 router.post('/addAuthor', function(req, res, next) {
-  console.log(req.body)
   knex('author').insert(req.body).then(function(data) {
     res.redirect('authors');
+  })
+})
+
+router.get('/:id/deleteAuthor', function(req, res, next) {
+  console.log(req.params)
+  knex('book_author').select('author.first_name', 'author.last_name', 'author.image as authorImage', 'author.id as authorId', 'author.bio', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').rightJoin('book', 'book_author.book_id', 'book.id').rightJoin('author', 'book_author.author_id', 'author.id').where('author.id', req.params.id).then(function(data) {
+    console.log(data)
+    res.render('deleteAuthor', { deleteAuthor: data[0] });
+  })
+})
+
+router.post('/deleteAuthor', function(req, res, next) {
+  console.log(req.body)
+  return Promise.all([
+    knex('book_author').del().where('book_author.author_id', req.body.id),
+    knex('author').del().where('author.id', req.body.id)
+  ]).then(function() {
+  res.redirect('authors')
   })
 })
 
