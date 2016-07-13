@@ -13,21 +13,24 @@ router.get('/books', function(req, res, next) {
   return Promise.all([
     knex('book_author').select('author.first_name', 'author.last_name', 'author.image as authorImage', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').leftJoin('book', 'book_author.book_id', 'book.id').leftJoin('author', 'book_author.author_id', 'author.id'),
   ]).then(function(data) {
-    console.log(data)
   res.render('books', { book_data: data[0] });
   })
 });
 
 router.get('/books/:id', function(req, res, next) {
   knex('book_author').select('author.first_name', 'author.last_name', 'author.image as authorImage', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').leftJoin('book', 'book_author.book_id', 'book.id').leftJoin('author', 'book_author.author_id', 'author.id').where('book.id', req.params.id).then(function(data) {
-    console.log(data)
     res.render('readMore', { ReadMore: data[0] });
   })
 })
 
 router.get('/authors', function(req, res, next) {
-  res.render('authors');
-})
+  return Promise.all([
+    knex('book_author').select('author.first_name', 'author.last_name', 'author.bio', 'author.image as authorImage', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').leftJoin('book', 'book_author.book_id', 'book.id').leftJoin('author', 'book_author.author_id', 'author.id'),
+  ]).then(function(data) {
+    console.log(data)
+  res.render('authors', { author_data: data[0] });
+  })
+});
 
 router.get('/add', function(req, res, next) {
   res.render('addBook');
@@ -65,7 +68,6 @@ router.get('/:id/edit', function(req, res, next) {
 })
 
 router.post('/edit', function(req, res, next) {
-  console.log(req.body.id)
     return knex('book').select().update(req.body).where('book.id', req.body.id)
   .then(function() {
   res.redirect('books')
