@@ -74,3 +74,9 @@ navigation {
 input, label {
  display:block;
 }
+
+.index_container {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}

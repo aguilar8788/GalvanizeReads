@@ -51,4 +51,9 @@ navigation ul {
 input, label {
   display: block; }
 
+.index_container {
+  display: flex;
+  flex-direction: row;
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map */
