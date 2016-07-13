@@ -4,6 +4,9 @@
     <li class="liData"><h1>{{deleteAuthor.first_name}} {{deleteAuthor.last_name}}</h1></li>
     <li class="description" class="liData">{{deleteAuthor.bio}}</li>
   </ul>
+  {{#each books}}
+      <li><a href="/books/{{this.id}}">{{this.title}}</a></li>
+  {{/each}}
   <form action="/deleteAuthor" method="post">
     <button type="submit" name="id" value="{{deleteAuthor.authorId}}">Delete {{deleteAuthor.first_name}} {{deleteAuthor.last_name}} ?</button>
   </form>
