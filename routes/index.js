@@ -101,6 +101,19 @@ router.post('/edit', function(req, res, next) {
   })
 })
 
+router.get('/:id/editAuthor', function(req, res, next) {
+  knex('book_author').select('author.first_name', 'author.last_name', 'author.image as authorImage', 'author.id as authorId', 'author.bio', 'book.title', 'book.image as bookImage', 'book.description', 'book.genre', 'book.id').leftJoin('book', 'book_author.book_id', 'book.id').leftJoin('author', 'book_author.author_id', 'author.id').where('book.id', req.params.id).then(function(data) {
+    res.render('editAuthor', { editAuthor: data[0] });
+  })
+})
+
+router.post('/editAuthor', function(req, res, next) {
+    return knex('author').select().update(req.body).where('author.id', req.body.id)
+  .then(function() {
+  res.redirect('authors')
+  })
+})
+
 
 
 

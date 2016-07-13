@@ -4,8 +4,8 @@
     {{#each author_data}}
       <ul class="book_info">
         <li><img src="{{this.authorImage}}" width="100" height="138" class="bookImage" /></li>
-        <li class="liData"><a href="/{{this.id}}/edit">edit</a><a href="/{{this.authorId}}/deleteAuthor">delete</a></li>
-        <li class="liData">{{this.first_name}} {{this.last_name}}</li>
+        <li class="liData"><a href="/{{this.id}}/editAuthor">edit</a><a href="/{{this.authorId}}/deleteAuthor">delete</a></li>
+        <li class="liData"><h1>{{this.first_name}} {{this.last_name}}</h1></li>
         <li class="description" class="liData">{{this.bio}}</li>
       </ul>
       <p><a href="/books/{{this.id}}">&gtBooks</a></p>
