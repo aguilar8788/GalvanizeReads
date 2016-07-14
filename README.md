@@ -12,7 +12,7 @@ Handlebars,
 Knex.js,
 PostgreSQL
 
-#to contribute to app
+#To Use Repo
 Fork and clone this repo locally
 npm install dependencies
 create the database galvanize-reads
