@@ -13,7 +13,8 @@ Knex.js,
 PostgreSQL
 
 #To Use Repo
-Fork and clone this repo locally
-npm install dependencies
-create the database galvanize-reads
+Fork and clone this repo locally,
+npm install dependencies,
+create the database galvanize-reads,
 utilize nodemon to run a development server
+To deploy you must create a .env file, and add a DATABASE_URL= key.
