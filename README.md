@@ -5,11 +5,11 @@ and delete your submissions. The app demonstrates a CRUD based application.
 
 #A deployed version of the app can be found at https://galvanize-reads-paguilar.herokuapp.com/
 
-Technologies Use:
-Node.js
-Express.js
-Handlebars
-Knex.js
+Technologies Used:
+Node.js,
+Express.js,
+Handlebars,
+Knex.js,
 PostgreSQL
 
 #to contribute to app
